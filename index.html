@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Introduction to Js</title>
+</head>
+<body onload="sayHello()">
+<!--
+HTML X
+CSS X
+Javascript is a client side programming language.
+OOP langauge / functional approach
+
+Executes in browser using V8 engine (Compiler) -> Chrome:
+SpiderMonkey for Mozilla Firefox
+
+
+DOM -> Document Object Model Structure
+- window 
+- document
+	- html
+	 - head
+	  - title
+	 - body
+	 	- form
+	 	- h1
+	 	- p
+
+
+A Javascript file must be with extension .js like main.js or script.js
+
+* Implementations: 
+- Internal Js
+- External Js
+- Inline Js
+
+* Selectors
+- id
+- class
+- tagName
+
+IE -> X
+EDGE -> Microsoft Engine
+
+-> For Form Validation:
+-> To send Data in Asyncronous mode to server (need php)
+-> Modify CSS using Js
+-> Handle User events like click, blur, change, load, etc...
+-->
+
+<!-- Internal CSS  -->
+<style type="text/css">
+	form table tr td {
+		padding: 15px;
+	}
+	input{
+		width: 300px;
+		height: 25px;
+	}
+	input[type=submit]{
+		width: 100px;
+	}
+
+</style>
+<div class="main">
+<p id="noticeText"> Important Notice : some important news .... </p>
+<form onsubmit="return myrules()">
+	<table>
+		<tr>
+			<td>
+				Name
+			</td>
+			<td>
+				<input type="text" name="nm" id="nm" required>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Age
+			</td>
+			<td>
+				<input type="text" name="age" id="age">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Phone
+			</td>
+			<td>
+				<input type="text" name="phno" id="phno">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" name="btn" id="btn" value="Sign Up">
+			</td>
+		</tr>
+	</table>
+</form>
+</div>
+<script type="text/javascript" src="script.js"></script>
+<!-- Internal Js -->
+<script type="text/javascript">
+
+	var state = false;
+
+	noticeText();
+
+
+	setTimeout(function(){
+
+		alert('Hello welcome to js tutorial!');
+		
+	},5000);
+
+
+
+	function noticeText(){
+		var text = document.getElementById('noticeText');
+		var i = 0;
+		var interval = setInterval(function(){
+
+			if(state)
+			{
+				// true
+				text.style.color = "red";
+				text.style.backgroundColor = "yellow";
+			}
+			else
+			{
+				// false
+				text.style.color = "white";
+				text.style.backgroundColor = "black";
+			}
+
+			state = !state;
+			i++;
+
+			if(i>10)
+			{
+				clearInterval(interval);
+			}
+
+		},2000);
+	}
+	function myrules()
+	{
+		var name = document.getElementById('nm');
+		var age = document.getElementById('age');
+		var phno = document.getElementById('phno');
+
+		if(name.value.length==0)
+		{
+			alert('Enter your fullname...');
+			return false;
+		}
+
+		if(age.value.length==0)
+		{
+			alert('Enter your age...');
+			return false;
+		}
+
+		if(isNaN(age.value)){
+			alert('Age must be a number');
+			return false;
+		}
+
+		if(phno.value.length==0)
+		{
+			alert('Enter your phone...');
+			return false;
+		}
+
+		console.log(name.value);
+		
+	}
+
+	function add(){
+
+	}
+</script>
+</body>
+</html>
